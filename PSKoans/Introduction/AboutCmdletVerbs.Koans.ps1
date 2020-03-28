@@ -36,7 +36,7 @@ Describe "Basic Verbs" {
 
                 Replace each ____ with the name of a Get-* command.
             #>
-            $Answers = "____", "____", "____", "____", "____"
+            $Answers = "Get-Advice", "Get-Command", "Get-Item", "Get-ChildItem", "Get-Alias"
             $Answers | Should -BeIn (Get-Command -Verb Get).Name
 
             $Answers | Get-Unique | Should -HaveCount 5 -Because "five unique cmdlets are required"
@@ -64,7 +64,7 @@ Describe "Basic Verbs" {
 
                 Replace each ____ with the name of a New-* command.
             #>
-            $Answers = "____", "____", "____", "____", "____"
+            $Answers = "New-Item", "New-Guid", "New-Object", "New-ScriptFileInfo", "New-TimeSpan"
             $Answers | Should -BeIn (Get-Command -Verb New).Name
 
             $Answers | Get-Unique | Should -HaveCount 5 -Because "five unique cmdlets are required"
@@ -100,7 +100,7 @@ Describe "Basic Verbs" {
 
                 Replace each ____ with the name of an Add-* command.
             #>
-            $Answers = "____", "____", "____", "____", "____"
+            $Answers = "Add-Type", "Add-AssertionOperator", "Add-Content", "Add-History", "Add-Member"
             $Answers | Should -BeIn (Get-Command -Verb Add).Name
 
             $Answers | Get-Unique | Should -HaveCount 5 -Because "five unique cmdlets are required"
@@ -140,7 +140,7 @@ Describe "Basic Verbs" {
 
                 Replace each ____ with the name of a Set-* command.
             #>
-            $Answers = "____", "____", "____", "____", "____"
+            $Answers = "Set-Location", "Set-StrictMode", "Set-Item", "Set-Date", "Set-Alias"
             $Answers | Should -BeIn (Get-Command -Verb Set).Name
 
             $Answers | Get-Unique | Should -HaveCount 5 -Because "five unique cmdlets are required"
@@ -174,7 +174,7 @@ Describe "Basic Verbs" {
 
                 Replace each ____ with the name of a Remove-* command.
             #>
-            $Answers = "____", "____", "____", "____", "____"
+            $Answers = "Remove-Alias", "Remove-Event", "Remove-Job", "Remove-Module", "Remove-TypeData"
             $Answers | Should -BeIn (Get-Command -Verb Remove).Name
 
             $Answers | Get-Unique | Should -HaveCount 5 -Because "five unique cmdlets are required"

@@ -60,24 +60,24 @@ Describe "Get Member" {
         #>
         $BecauseString = "property '{0}' should be present in output from {1}"
 
-        $Cmdlet1 = '____'
-        $PropertyName = '____'
+        $Cmdlet1 = 'Get-Alias'
+        $PropertyName = 'Name'
 
         $Reason = $BecauseString -f $PropertyName, $cmdlet1
         & (Get-Command -Name $Cmdlet1) |
             Get-Member -MemberType Property -Name $PropertyName |
             Should -Not -BeNullOrEmpty -Because $Reason
 
-        $Cmdlet2 = '____'
-        $PropertyName = '____'
+        $Cmdlet2 = 'Get-Date'
+        $PropertyName = 'Day'
 
         $Reason = $BecauseString -f $PropertyName, $cmdlet2
         & (Get-Command -Name $Cmdlet2) |
             Get-Member -MemberType Property -Name $PropertyName |
             Should -Not -BeNullOrEmpty -Because $Reason
 
-        $Cmdlet3 = '____'
-        $PropertyName = '____'
+        $Cmdlet3 = 'Get-Module'
+        $PropertyName = 'ModuleType'
 
         $Reason = $BecauseString -f $PropertyName, $cmdlet3
         & (Get-Command -Name $Cmdlet3) |
@@ -104,22 +104,22 @@ Describe "Get Member" {
         #>
         $BecauseString = "method '{0}' should be present in output from {1}"
 
-        $Cmdlet1 = '____'
-        $MethodName = '____'
+        $Cmdlet1 = 'Get-Module'
+        $MethodName = 'Invoke'
         $Reason = $BecauseString -f $MethodName, $cmdlet1
         & (Get-Command -Name $Cmdlet1) |
             Get-Member -MemberType Method -Name $MethodName |
             Should -Not -BeNullOrEmpty -Because $Reason
 
-        $Cmdlet2 = '____'
-        $MethodName = '____'
+        $Cmdlet2 = 'Get-Culture'
+        $MethodName = 'GetFormat'
         $Reason = $BecauseString -f $MethodName, $cmdlet2
         & (Get-Command -Name $Cmdlet2) |
             Get-Member -MemberType Method -Name $MethodName |
             Should -Not -BeNullOrEmpty -Because $Reason
 
-        $Cmdlet3 = '____'
-        $MethodName = '____'
+        $Cmdlet3 = 'Get-MarkdownOption'
+        $MethodName = 'SetDarkTheme'
         $Reason = $BecauseString -f $MethodName, $cmdlet3
         & (Get-Command -Name $Cmdlet3) |
             Get-Member -MemberType Method -Name $MethodName |
