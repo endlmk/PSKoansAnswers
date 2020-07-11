@@ -78,7 +78,25 @@ Describe "The Stock Challenge" {
             param([string[]]$Data)
 
             # Add the solution code here!
+            $work = @{ 
+                variance = 0
+                Date = ''
+            }
 
+            foreach($item in $Data) {
+                $a = $item -split ','
+                if($a[0] -eq "Date")
+                {
+                    continue
+                }
+
+                $v = [Math]::Abs([double] $a[4] - [double] $a[1])
+                if($work["variance"] -lt $v) {
+                    $work["variance"] = $v
+                    $work["Date"] = $a[0]
+                }
+            }
+            $work["Date"]
         }
     }
 
