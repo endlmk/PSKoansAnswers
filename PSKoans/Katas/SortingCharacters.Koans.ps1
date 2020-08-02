@@ -43,8 +43,37 @@ Describe 'Kata - Sorting Characters' {
             param($String)
 
             # Add your solution code here!
-
+            [String]$res = ""
+            $String.ToCharArray().ForEach({if($_ -in 'a'..'z') {$res += $_}})
+            # qsort($res)
+            $w = $res.ToCharArray()
+            for ($i = 0; $i -lt $res.Length; $i += 1) {
+                for($j = 0; $j -lt $res.Length - 1 - $i; $j += 1) {
+                    if([String]($w[$j]) -gt [String]($w[$j+1])) {
+                        $w[$j], $w[$j+1] = $w[$j+1], $w[$j]
+                    }
+                }                
+            }
+            [String]::new($w)
         }
+
+        function qsort {
+            param([String]$str)
+            if($str.Length -eq 0) { return "" }
+            if($str.Length -eq 1) { return $str }
+            $gtelem = ""
+            $leelem = ""
+            for($i = 1; $i -lt $str.Length; $i += 1) {
+                # if($str[$i].ToString() -gt $str[0].ToString()) {$gtelem += $str[$i]}
+                # if($str[$i].ToString() -le $str[0].ToString()) {$leelem += $str[$i]}
+                if($str[$i] -igt $str[0]) {$gtelem += $str[$i]}
+                if($str[$i] -le $str[0]) {$leelem += $str[$i]}
+            }
+            $lhs = qsort($leelem)
+            $rhs = qsort($gtelem)
+            $lhs + $str[0] + $rhs
+        }
+        # }
     }
 
     <#
@@ -67,11 +96,11 @@ Describe 'Kata - Sorting Characters' {
         }
         @{
             String = 'What do you call the world?'
-            Result = 'aacddehhlllooorttuwWy'
+            Result = 'aacddehhlllooorttuWwy'
         }
         @{
             String = 'Out of nowhere, the mind comes forth.'
-            Result = 'cdeeeeffhhhimmnnooOoorrstttuw'
+            Result = 'cdeeeeffhhhimmnnOoooorrstttuw'
         }
         @{
             String = 'Because it is so very clear, it takes longer to come to the realization.'
@@ -79,11 +108,11 @@ Describe 'Kata - Sorting Characters' {
         }
         @{
             String = 'The hands of the world are open.'
-            Result = 'aaddeeeefhhhlnnoooprrstTw'
+            Result = 'aaddeeeefhhhlnnoooprrsTtw'
         }
         @{
             String = 'You are those huge waves sweeping everything before them, swallowing all in their path.'
-            Result = 'aaaaabeeeeeeeeeeeefgggghhhhhhiiiiillllmnnnnoooopprrrrsssstttttuuvvwwwwyY'
+            Result = 'aaaaabeeeeeeeeeeeefgggghhhhhhiiiiillllmnnnnoooopprrrrsssstttttuuvvwwwwYy'
         }
     )
 }
